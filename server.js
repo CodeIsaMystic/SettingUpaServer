@@ -34,14 +34,14 @@ const database = {
  *   --> res = GET req OK
  * 
  * SIGNIN: 
- *   --> POST = success OR fail
+ *    --> POST = success OR fail
  * REGISTER:
  *    -->  POST = user object
  * /PROFILE/:userId
  *    --> GET = user
  * 
  * /IMAGE:
- *   --> PUT return user object
+ *    --> PUT return user object
  */
 
 
@@ -92,7 +92,49 @@ app.post('/register', (req, res) => {
 
 
 
+app.get('/profile/:id', (req, res) => {
+  const { id } = req.params;
+  let found = false;
 
+  database.users.forEach(user => {
+    if(user.id === id) {
+      found = true;
+      return res.json(user);
+    }
+  });
+  
+  if(!found) {
+    res.status(404).json('There are no such user with that name. Sorry.');
+  }
+});
+
+/**
+ * 
+ * In that case,
+ *  we update from the image section url
+ *  cos' we want to increment entries
+ *  to have a "Rank number" to display
+ * 
+ * Notice, here we want 
+ *  to check on the body of the req
+ *  
+ */
+app.put('/image', (req, res) => {
+  const { id } = req.body;
+  let found = false;
+
+  database.users.forEach(user => {
+    if(user.id === id) {
+      found = true;
+      user.entries++;
+      return res.json(user.entries);
+    }
+  });
+  
+  if(!found) {
+    res.status(404).json('There are no such user with that name. Impossible to count.');
+  }
+});
 
 
 
