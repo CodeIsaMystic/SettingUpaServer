@@ -9,6 +9,7 @@
   "author": "Jowd",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "express": "^4.17.1",
     "nodemon": "^2.0.4"
   }
