@@ -1,12 +1,12 @@
 {
   "name": "setting-up-a-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "setting up a server with Node.js and express testing on Postman.co making simples functionalities",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "Jowd",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
