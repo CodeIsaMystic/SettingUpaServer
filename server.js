@@ -34,7 +34,7 @@ const database = {
 };
 
 /**
- * Giving a idea....
+ * Giving an idea....
  *
  *
  * CHECK TEST:
@@ -58,8 +58,10 @@ app.get('/', (req, res) => {
 /**
  * On our case,
  *  we focus on the Body
- *  then select the raw & JSON on  postman
- */
+ *  then select the raw & JSON on postman.co
+ * 
+ *  ==> testing the bcrypt npm package  
+**/
 app.post('/signin', (req, res) => {
   bcrypt.compare('annanas', '$2a$10$4qFPQyxl74THxsCDw9WeAeT1mI4Z7ECBrmTEgdIqGccS.npKIHznW', function (err, res) {
     console.log('first guess', res);
@@ -81,8 +83,9 @@ app.post('/signin', (req, res) => {
  *  we want to  push another one
  *  new user in the database variable (object)
  *
- *  start first the "static" way to do
+ *  (start first the "static" way to do)
  */
+
 app.post('/register', (req, res) => {
   const { email, name, password } = req.body;
 
@@ -96,6 +99,8 @@ app.post('/register', (req, res) => {
 
   res.json(database.users[database.users.length - 1]);
 });
+
+
 
 app.get('/profile/:id', (req, res) => {
   const { id } = req.params;
@@ -141,9 +146,13 @@ app.put('/image', (req, res) => {
   }
 });
 
+
 /**
- *  bcrypt-nodejs package
- *
+ *  bcrypt-nodejs => npm package
+ *                
+ *   => look at the notice on "bcrypt-vs-bcrypt.js"
+ *   => https://github.com/kelektiv/node.bcrypt.js/wiki/bcrypt-vs-bcrypt.js
+ * 
  */
 // Load hash from your password DB.
 
@@ -157,6 +166,26 @@ app.put('/image', (req, res) => {
 // res = false
 //});
 
+
+
+
+
+/**
+ *  .listen on prot 3000
+ *  & confirm with console.log
+ */
 app.listen(3000, () => {
   console.log('app is running on port 3000');
 });
+
+
+/**
+ * 
+ * on terminal :
+ * 
+ * run => 'npm run start' command
+ * 
+ * will launch the command set on package.json
+ *     => 'node server.js'
+ * 
+ */
